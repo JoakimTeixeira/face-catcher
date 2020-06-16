@@ -1,0 +1,11 @@
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navigation-description {
+  cursor: pointer;
+  padding: 0 2rem;
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
