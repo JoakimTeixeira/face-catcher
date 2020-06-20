@@ -1,0 +1,9 @@
+.rank {
+  text-align: center;
+  margin: 3rem 0 0;
+  color: #fff;
+}
+
+.rank-number {
+  font-size: 2.5rem;
+}
