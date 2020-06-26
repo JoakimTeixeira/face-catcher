@@ -1,0 +1,10 @@
+.face-wrapper {
+  text-align: center;
+}
+
+.face-img {
+  padding: 1rem;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
