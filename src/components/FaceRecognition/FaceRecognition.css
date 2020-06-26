@@ -1,10 +1,25 @@
+.face-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .face-wrapper {
-  text-align: center;
+  position: relative;
+  margin: 1rem;
 }
 
 .face-img {
-  padding: 1rem;
   width: 100%;
   max-width: 500px;
   height: auto;
+}
+
+.face-box {
+  position: absolute;
+  box-shadow: 0 0 0 3px #149df2 inset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
 }
