@@ -4,7 +4,7 @@ import "./Rank.css";
 const Rank = ({ name, entries }) => {
   return (
     <div className="rank">
-      <div className="rank-title">{`${name}, your current rank is...`}</div>
+      <div className="rank-title">{`${name}, your current entry count is...`}</div>
       <div className="rank-number">#{entries}</div>
     </div>
   );
