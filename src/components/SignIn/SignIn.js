@@ -37,13 +37,17 @@ class SignIn extends Component {
       });
   };
 
+  onFormSubmit = event => {
+    event.preventDefault();
+  };
+
   render() {
     const { onRouteChange } = this.props;
 
     return (
       <article className="container">
         <main className="signIn">
-          <div className="signIn-form">
+          <form onSubmit={this.onFormSubmit} className="signIn-form">
             <fieldset className="signIn-fieldset">
               <legend className="signIn-legend">Sign In</legend>
               <div className="signIn-wrapper">
@@ -56,6 +60,7 @@ class SignIn extends Component {
                   name="email-address"
                   id="email-address"
                   onChange={this.onEmailChange}
+                  required
                 />
               </div>
               <div className="signIn-wrapper">
@@ -68,6 +73,7 @@ class SignIn extends Component {
                   name="password"
                   id="password"
                   onChange={this.onPasswordChange}
+                  required
                 />
               </div>
             </fieldset>
@@ -82,7 +88,7 @@ class SignIn extends Component {
                 Register
               </p>
             </div>
-          </div>
+          </form>
         </main>
       </article>
     );

@@ -23,7 +23,7 @@ class Register extends Component {
     this.setState({ password: event.target.value });
   };
 
-  onSubmitRegister = () => {
+  onSubmitRegister = event => {
     fetch("http://localhost:3000/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -35,18 +35,22 @@ class Register extends Component {
     })
       .then(response => response.json())
       .then(user => {
-        if (user) {
+        if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
       });
   };
 
+  onFormSubmit = event => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <article className="container">
         <main className="signIn">
-          <div className="signIn-form">
+          <form onSubmit={this.onFormSubmit} className="signIn-form">
             <fieldset className="signIn-fieldset">
               <legend className="signIn-legend">Register</legend>
               <div className="signIn-wrapper">
@@ -59,6 +63,7 @@ class Register extends Component {
                   name="name"
                   id="name"
                   onChange={this.onNameChange}
+                  required
                 />
               </div>
               <div className="signIn-wrapper">
@@ -71,6 +76,7 @@ class Register extends Component {
                   name="email"
                   id="email"
                   onChange={this.onEmailChange}
+                  required
                 />
               </div>
               <div className="signIn-wrapper">
@@ -83,6 +89,7 @@ class Register extends Component {
                   name="password"
                   id="password"
                   onChange={this.onPasswordChange}
+                  required
                 />
               </div>
             </fieldset>
@@ -94,7 +101,7 @@ class Register extends Component {
                 value="Register"
               />
             </div>
-          </div>
+          </form>
         </main>
       </article>
     );
