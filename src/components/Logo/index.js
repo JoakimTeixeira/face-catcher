@@ -1,5 +1,5 @@
 import React from "react";
-import "./Logo.css";
+import "./styles.css";
 import faceId from "./face-id.png";
 import Tilt from "react-parallax-tilt";
 

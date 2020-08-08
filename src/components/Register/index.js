@@ -1,31 +1,36 @@
 import React, { Component } from "react";
-import "./SignIn.css";
+import "../SignIn/styles.css";
 
-class SignIn extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signInEmail: "",
-      signInPassword: "",
+      name: "",
+      email: "",
+      password: "",
     };
   }
 
+  onNameChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
   onEmailChange = event => {
-    this.setState({ signInEmail: event.target.value });
+    this.setState({ email: event.target.value });
   };
 
   onPasswordChange = event => {
-    this.setState({ signInPassword: event.target.value });
+    this.setState({ password: event.target.value });
   };
 
-  // Connect to API Rest using HTTP
-  onSubmitSignIn = () => {
-    fetch("https://face-catcher-api.herokuapp.com/signin", {
+  onSubmitRegister = event => {
+    fetch("https://face-catcher-api.herokuapp.com/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword,
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
       }),
     })
       .then(response => response.json())
@@ -42,23 +47,34 @@ class SignIn extends Component {
   };
 
   render() {
-    const { onRouteChange } = this.props;
-
     return (
       <article className="container">
         <main className="signIn">
           <form onSubmit={this.onFormSubmit} className="signIn-form">
             <fieldset className="signIn-fieldset">
-              <legend className="signIn-legend">Sign In</legend>
+              <legend className="signIn-legend">Register</legend>
               <div className="signIn-wrapper">
-                <label className="signIn-label" htmlFor="email-address">
+                <label className="signIn-label" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  className="signIn-input"
+                  type="text"
+                  name="name"
+                  id="name"
+                  onChange={this.onNameChange}
+                  required
+                />
+              </div>
+              <div className="signIn-wrapper">
+                <label className="signIn-label" htmlFor="email">
                   Email
                 </label>
                 <input
                   className="signIn-input"
                   type="email"
-                  name="email-address"
-                  id="email-address"
+                  name="email"
+                  id="email"
                   onChange={this.onEmailChange}
                   required
                 />
@@ -79,14 +95,11 @@ class SignIn extends Component {
             </fieldset>
             <div className="signIn-wrapper">
               <input
-                onClick={this.onSubmitSignIn}
+                onClick={this.onSubmitRegister}
                 className="signIn-input signIn-btn"
                 type="submit"
-                value="Sign in"
+                value="Register"
               />
-              <p onClick={() => onRouteChange("register")} className="register">
-                Register
-              </p>
             </div>
           </form>
         </main>
@@ -95,4 +108,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default Register;
